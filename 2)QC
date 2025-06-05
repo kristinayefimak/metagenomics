@@ -23,6 +23,11 @@ fastp \
 # Run fastp on all paired-end files in the data/ directory
 # Assumes file naming like: sample_XYZ_1.gz and sample_XYZ_2.gz
 
+PASTE IN FILE TO RUN START:
+nano run_fastp.sh
+
+PASTE IN FILE TO RUN START:
+
 # Load the fastp module (VSC)
 module load fastp
 
@@ -50,5 +55,9 @@ for fwd in data/*_1.gz; do
       -h "$html" \
       -j "$json"
 done
+
+#UNTILL HERE: exit and save
+
+bash run_fastp.sh
 
 #now all trimmed data is stored in the results folder
