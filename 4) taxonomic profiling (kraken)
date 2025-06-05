@@ -1,0 +1,5 @@
+#Kraken2 is a k-mer–based classifier that: Breaks your reads into k-mers
+#Compares them to a reference database of known sequences (e.g. bacteria, viruses, etc.)
+#Assigns each read to the most specific taxonomic label based on where its k-mers match
+#It’s fast and accurate, especially for microbiome reads.
+
