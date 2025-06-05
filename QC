@@ -1,0 +1,54 @@
+#Cleaning (or preprocessing) reads means removing unwanted or low-quality parts of your raw sequencing data so that 
+#downstream analyses (e.g. host removal, taxonomic classification) are more accurate and reliable
+
+#Adapter trimming
+#→ Removes leftover sequencing adapter sequences.
+
+#Quality trimming
+#→ Cuts low-quality bases (e.g. Phred score < 20) from the ends of reads.
+
+#Length filtering
+#→ Discards reads that are too short after trimming.
+
+#overview of what happens
+fastp \
+  -i data/sample_R1.fastq.gz \        # input: forward reads
+  -I data/sample_R2.fastq.gz \        # input: reverse reads
+  -o results/sample_R1.clean.fq.gz \  # output: cleaned forward reads
+  -O results/sample_R2.clean.fq.gz \  # output: cleaned reverse reads
+  -h results/sample_fastp.html \      # output: interactive HTML report
+  -j results/sample_fastp.json        # output: JSON report (for parsing)
+
+#bash to loop over all data in DATA file#!/bin/bash
+# Run fastp on all paired-end files in the data/ directory
+# Assumes file naming like: sample_XYZ_1.gz and sample_XYZ_2.gz
+
+# Load the fastp module (VSC)
+module load fastp
+
+# Loop over all _1.gz files (forward reads)
+for fwd in data/*_1.gz; do
+    # Extract the base sample name (e.g., A1_AnOudin_C02)
+    base=$(basename "$fwd" _1.gz)
+    
+    # Define reverse read path
+    rev="data/${base}_2.gz"
+    
+    # Define output files
+    out1="results/${base}_R1.clean.fq.gz"
+    out2="results/${base}_R2.clean.fq.gz"
+    html="results/${base}_fastp.html"
+    json="results/${base}_fastp.json"
+    
+    echo "Running fastp on sample: $base"
+
+    fastp \
+      -i "$fwd" \
+      -I "$rev" \
+      -o "$out1" \
+      -O "$out2" \
+      -h "$html" \
+      -j "$json"
+done
+
+#now all trimmed data is stored in the results folder
