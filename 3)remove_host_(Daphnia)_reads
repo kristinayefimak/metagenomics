@@ -5,6 +5,8 @@
 wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/020/631/705/GCF_020631705.1_ASM2063170v1.1/GCF_020631705.1_ASM2063170v1.1_genomic.fna.gz
 gunzip GCF_020631705.1_ASM2063170v1.1_genomic.fna.gz
 
+module load Bowtie2
+
 #Step 2: Build the Bowtie2 index= this already takes into account both forward and reverse strand
 bowtie2-build GCF_020631705.1_ASM2063170v1.1_genomic.fna daphnia_index
 
