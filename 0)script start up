@@ -13,7 +13,7 @@ git push
 
 WORKFLOW FROM THEN ON:
 cd $VSC_SCRATCH
-cd $metagenomics
+cd metagenomics
 git pull
 … add what you want
 git add *
