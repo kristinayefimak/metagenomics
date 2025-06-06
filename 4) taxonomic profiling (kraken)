@@ -3,3 +3,6 @@
 #Assigns each read to the most specific taxonomic label based on where its k-mers match
 #It’s fast and accurate, especially for microbiome reads.
 
+#write code in file:
+
+nano run_kraken2.sh
