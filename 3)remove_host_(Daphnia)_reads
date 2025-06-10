@@ -1,6 +1,6 @@
 #Download and index Daphnia reference genome:
 
-#STEP1: Download the Daphnia reference genome
+#STEP1: Download the Daphnia reference genome= ONLY DO THIS THE FIRST TIME=> from then on this file is present in directory
 #You need a .fna file (FASTA format of the genome). For example, from NCBI:
 wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/020/631/705/GCF_020631705.1_ASM2063170v1.1/GCF_020631705.1_ASM2063170v1.1_genomic.fna.gz
 gunzip GCF_020631705.1_ASM2063170v1.1_genomic.fna.gz
