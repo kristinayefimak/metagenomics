@@ -7,7 +7,8 @@ gunzip GCF_020631705.1_ASM2063170v1.1_genomic.fna.gz
 
 module load Bowtie2
 
-#Step 2: Build the Bowtie2 index= this already takes into account both forward and reverse strand
+#Step 2: Build the Bowtie2 index= this already takes into account both forward and reverse strand= 
+#Bowtie2 creates 6 index files — these are binary-encoded versions of your genome that make alignment very fast and memory-efficient.
 bowtie2-build GCF_020631705.1_ASM2063170v1.1_genomic.fna daphnia_index
 
 #STEP 3: Map reads and extract non-host pairs= Reads that align well are likely Daphnia and should be removed.
@@ -20,8 +21,8 @@ nano remove_host_reads.sh
 #!/bin/bash
 # Remove Daphnia host reads from cleaned FASTQ files using Bowtie2 + SAMtools
 
-module load bowtie2
-module load samtools
+module load Bowtie2
+module load SAMtools
 
 # Path to Bowtie2 index (built from Daphnia .fna)
 INDEX="daphnia_index"  # Adjust if located elsewhere
