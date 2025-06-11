@@ -21,8 +21,9 @@ nano remove_host_reads.sh
 #!/bin/bash
 # Remove Daphnia host reads from cleaned FASTQ files using Bowtie2 + SAMtools
 
-module load Bowtie2
-module load SAMtools
+module load Bowtie2/2.4.4-GCC-10.3.0
+module load SAMtools/1.18-GCC-12.3.0
+
 
 # Path to Bowtie2 index (built from Daphnia .fna)
 INDEX="daphnia_index"  # Adjust if located elsewhere
@@ -63,11 +64,38 @@ for fwd in results/*_R1.clean.fq.gz; do
 done
 #UNTILL HERE PASTE IN NANO
 #make it executable
+#copy this file to the job you are gonna submit e.g.:
 
-chmod +x remove_host_reads.sh
+cp /scratch/leuven/363/vsc36367/metagenomics/remove_host_reads.sh /data/leuven/363/vsc36367/.ondemand/data/projects/default/4/
+ls /data/leuven/363/vsc36367/.ondemand/data/projects/default/4/
 
-./remove_host_reads.sh     # if you used chmod +x
-# or
-bash remove_host_reads.sh  # works even without chmod
+
+#RUN THIS JOB ON THE CLUSTER
+#on vsc: submit job with this script:
+
+#!/bin/bash
+#SBATCH --job-name=remove_host
+#SBATCH --output=logs/remove_host_%j.out
+#SBATCH --error=logs/remove_host_%j.err
+
+#SBATCH --partition=batch
+#SBATCH --time=04:00:00
+#SBATCH --cpus-per-task=4
+#SBATCH --cluster=genius
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=kristina.yefimak@kuleuven.be
+#SBATCH -A lp_svbelleghem
+
+# Load modules
+module load Bowtie2/2.4.4-GCC-10.3.0
+module load SAMtools/1.18-GCC-12.3.0
+
+
+
+
+# Run your host-removal script
+bash remove_host_reads.sh
+
+#STOP PASTE HERE
 
 #data is stored in RESULTs/nonhost
