@@ -7,3 +7,10 @@
 *.bt2
 *.fq.gz
 *.bam
+data/
+results/
+*.fq
+*.sam
+*.html
+*.json
+*.report
