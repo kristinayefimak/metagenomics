@@ -43,3 +43,5 @@ done
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=kristina.yefimak@kuleuven.be
 #SBATCH -A lp_svbelleghem
+
+bash run_humann_all.sh
