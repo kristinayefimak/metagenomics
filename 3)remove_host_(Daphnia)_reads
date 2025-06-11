@@ -21,9 +21,6 @@ nano remove_host_reads.sh
 #!/bin/bash
 # Remove Daphnia host reads from cleaned FASTQ files using Bowtie2 + SAMtools
 
-module load Bowtie2/2.4.4-GCC-10.3.0
-module load SAMtools/1.18-GCC-12.3.0
-
 
 # Path to Bowtie2 index (built from Daphnia .fna)
 INDEX="daphnia_index"  # Adjust if located elsewhere
@@ -86,9 +83,7 @@ ls /data/leuven/363/vsc36367/.ondemand/data/projects/default/4/
 #SBATCH --mail-user=kristina.yefimak@kuleuven.be
 #SBATCH -A lp_svbelleghem
 
-# Load modules
-module load Bowtie2/2.4.4-GCC-10.3.0
-module load SAMtools/1.18-GCC-12.3.0
+
 
 
 
