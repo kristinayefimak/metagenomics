@@ -1,7 +1,7 @@
 FIRST THINGS YOU DO:
 cd $VSC_SCRATCH
 GO IN TO METAGENOMICS file:
-cd $metagenomics
+cd metagenomics
 ONLY FIRST TIME YOU USE THE NEW FILE ON GITHUB:
 git clone git@github.com:kristinayefimak/metagenomics.git
 PROCEED:
