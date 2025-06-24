@@ -78,12 +78,20 @@ ls /data/leuven/363/vsc36367/.ondemand/data/projects/default/4/
 #SBATCH --partition=batch
 #SBATCH --time=04:00:00
 #SBATCH --cpus-per-task=4
-#SBATCH --cluster=genius
+#SBATCH --cluster=wice
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=kristina.yefimak@kuleuven.be
 #SBATCH -A lp_svbelleghem
 
+# Load modules
+# Load required toolchain first
 
+module load Bowtie2/2.4.4-GCC-10.3.0
+module load SAMtools/1.18-GCC-12.3.0
+
+
+# Run your host-removal script
+bash remove_host_reads.sh
 
 
 
