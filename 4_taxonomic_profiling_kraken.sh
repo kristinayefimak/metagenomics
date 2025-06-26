@@ -20,7 +20,8 @@
 
 # Batch classify all microbiome reads using Kraken2
 
-module load kraken2
+conda activate kraken2_env
+
 
 # Path to Kraken2 database
 DB="/path/to/kraken2_db"  # Replace with actual path
