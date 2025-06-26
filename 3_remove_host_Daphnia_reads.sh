@@ -26,7 +26,7 @@ conda create -n bowsam -c bioconda bowtie2 samtools
 #SBATCH --error=logs/remove_host_%j.err
 
 #SBATCH --partition=batch
-#SBATCH --time=04:00:00
+#SBATCH --time=10:00:00
 #SBATCH --cpus-per-task=4
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=kristina.yefimak@kuleuven.be
@@ -51,9 +51,11 @@ for fwd in results/*_R1.clean.fq.gz; do
     
     rev="results/${base}_R2.clean.fq.gz"
     
-    sam="results/${base}.host.sam" bam="results/nonhost/${base}_nonhost.bam" 
-    out1="results/nonhost/${base}_R1.nonhost.fq" out2="results/nonhost/${base}_R2.nonhost.fq" echo "Processing sample: 
-    $base"
+    sam="results/${base}.host.sam" 
+    bam="results/nonhost/${base}_nonhost.bam" 
+    out1="results/nonhost/${base}_R1.nonhost.fq" 
+    out2="results/nonhost/${base}_R2.nonhost.fq" 
+    echo "Processing sample: $base"
     
     bowtie2 -x $INDEX -1 "$fwd" -2 "$rev" \ --very-sensitive -S "$sam"
     samtools view -b -f 12 -F 256 "$sam" > "$bam"
@@ -63,7 +65,6 @@ for fwd in results/*_R1.clean.fq.gz; do
     
     rm "$sam"
 done
-
 #UNTIL HERE
 
 
