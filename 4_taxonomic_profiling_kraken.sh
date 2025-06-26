@@ -18,6 +18,9 @@
 #SBATCH --mail-user=kristina.yefimak@kuleuven.be
 #SBATCH -A lp_svbelleghem
 
+#to install conda first time
+conda create -n kraken2_env kraken2 -c bioconda -c conda-forge
+
 # Batch classify all microbiome reads using Kraken2
 source ~/.bashrc
 conda activate kraken2_env
