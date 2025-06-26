@@ -3,10 +3,21 @@
 #Assigns each read to the most specific taxonomic label based on where its k-mers match
 #It’s fast and accurate, especially for microbiome reads.
 
-#write code in file:
-nano run_kraken2.sh
+#write code directly in job composer
 
+#THIS WRITE IN JOB COMPOSER
 #!/bin/bash
+#SBATCH --job-name=remove_host
+#SBATCH --output=logs/remove_host_%j.out
+#SBATCH --error=logs/remove_host_%j.err
+
+#SBATCH --partition=batch
+#SBATCH --time=10:00:00
+#SBATCH --cpus-per-task=4
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=kristina.yefimak@kuleuven.be
+#SBATCH -A lp_svbelleghem
+
 # Batch classify all microbiome reads using Kraken2
 
 module load kraken2
@@ -33,8 +44,7 @@ for fwd in results/nonhost/*_R1.nonhost.fq; do
             --output "$output"
 done
 
-SAVE FILE
-bash run_kraken2.sh
+#UNTILL HERE IN JOB COMPOSER
 
 #Make sure to replace "/path/to/kraken2_db" with your actual Kraken2 DB path (check with ls /path/to/kraken2_db/ to confirm hash.k2d etc. exist).
 #Output files will go into results/kraken/ as:
