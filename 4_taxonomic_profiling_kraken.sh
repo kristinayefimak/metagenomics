@@ -19,12 +19,9 @@
 #SBATCH -A lp_svbelleghem
 
 # Batch classify all microbiome reads using Kraken2
-
+source ~/.bashrc
 conda activate kraken2_env
-
-
-# Path to Kraken2 database
-DB="/path/to/kraken2_db"  # Replace with actual path
+cd /scratch/leuven/363/vsc36367/metagenomics/
 
 # Create output folder if needed
 mkdir -p results/kraken
